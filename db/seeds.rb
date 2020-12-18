@@ -7,10 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+3.times do |topic|
+    Topic.create!(title: "topic #{topic}")
+end 
+
 10.times do |blog|
     Blog.create!(
         title: Faker::TvShows::RickAndMorty.character,
-        body: Faker::TvShows::RickAndMorty.quote
+        body: Faker::TvShows::RickAndMorty.quote,
+        topic_id: Topic.last.id
     )
 end 
 
@@ -24,7 +29,17 @@ end
 9.times do |portfolio_item|
     Portfolio.create!(
         title: Faker::TvShows::SouthPark.character,
-        subtitle: Faker::Movies::Departed.quote,
+        subtitle: "Ruby on Rails",
+        body: Faker::TvShows::SouthPark.quote,
+        main_image: "https://via.placeholder.com/500",
+        thumb_image: "https://via.placeholder.com/150"
+    )
+end
+
+1.times do |portfolio_item|
+    Portfolio.create!(
+        title: Faker::TvShows::SouthPark.character,
+        subtitle: "Angular",
         body: Faker::TvShows::SouthPark.quote,
         main_image: "https://via.placeholder.com/500",
         thumb_image: "https://via.placeholder.com/150"

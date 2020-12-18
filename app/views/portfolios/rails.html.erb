@@ -1,0 +1,18 @@
+<h1>Rails Items</h1>
+
+<a href="portfolios/new">Create New</a>
+
+<%= link_to  "Create New Item", new_portfolio_path %>
+
+
+
+<% @rails_items.each do |item| %>
+    <hr>
+    <%= image_tag item.thumb_image unless item.thumb_image.nil? %>
+    <%= link_to  item.title, portfolio_show_path(item) %>
+    <p> <%= item.subtitle %></p>
+    <p> <%= item.body %></p>
+    <%= link_to  "Edit", edit_portfolio_path(item.id) %>
+    <%= link_to  "DESTROY THIS PATHETIC PORTFOLIO", portfolio_path(item), method: :delete, data: { confirm: 'Do it?'} %>
+    <hr>
+<% end %>
