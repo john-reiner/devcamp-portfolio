@@ -45,3 +45,9 @@ end
         thumb_image: "https://via.placeholder.com/150"
     )
 end
+
+3.times do |technology|
+    Portfolio.last.technologies.create!(
+        name: "Technolgoy: #{technology}",
+    )
+end
