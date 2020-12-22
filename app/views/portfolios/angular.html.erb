@@ -1,4 +1,4 @@
-<h1>Portfolio Items</h1>
+<h1>Angular Items</h1>
 
 <a href="portfolios/new">Create New</a>
 
@@ -6,15 +6,13 @@
 
 
 
-<% @portfolio_items.each do |item| %>
+<% @angular_items.each do |item| %>
     <hr>
     <%= image_tag item.thumb_image unless item.thumb_image.nil? %>
     <%= link_to  item.title, portfolio_show_path(item) %>
     <p> <%= item.subtitle %></p>
     <p> <%= item.body %></p>
     <%= link_to  "Edit", edit_portfolio_path(item.id) %>
-    <%= link_to  "Show", portfolio_path(item) %>
-
     <%= link_to  "DESTROY THIS PATHETIC PORTFOLIO", portfolio_path(item), method: :delete, data: { confirm: 'Do it?'} %>
     <hr>
 <% end %>

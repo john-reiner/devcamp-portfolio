@@ -7,3 +7,10 @@
 <p> <%= @portfolio_item.body %></p>
 
 <%= link_to  "Return to all portfolios", portfolios_path %>
+
+<h2>Tech Used: </h2>
+
+<% @portfolio_item.technologies.each do |t| %>
+    <p><%= t.name %></p>
+
+<% end %>

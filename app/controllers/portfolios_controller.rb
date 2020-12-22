@@ -1,10 +1,19 @@
 class PortfoliosController < ApplicationController
     def index
-        @portfolio_items = Portfolio.all 
+        @portfolio_items = Portfolio.all
     end
+
+    def angular
+        @angular_items = Portfolio.angular
+    end 
+
+    def rails 
+        @rails_items = Portfolio.ruby_on_rails_portfolio_items
+    end 
 
     def new
         @portfolio_item = Portfolio.new
+        3.times { @portfolio_item.technologies.build }
     end
 
     def show
@@ -12,7 +21,7 @@ class PortfoliosController < ApplicationController
     end
 
     def create
-        @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
+        @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name]))
 
         respond_to do |format|
             if @portfolio_item.save
